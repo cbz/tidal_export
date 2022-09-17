@@ -1,0 +1,2 @@
+tidalapi >= 0.7
+tinydb >= 4.7
