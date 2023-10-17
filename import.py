@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-from tinydb import TinyDB, Query
+from tinydb import TinyDB
 import tidalapi
-import csv
 
 DBASE="playlist.json"
 
@@ -30,7 +29,7 @@ for p in db:
     trackset = set([t.id for t in playlist.tracks()])
     
     for t in insert_tracks:
-        if 'id' in t and not t['id'] in trackset:
+        if 'id' in t and t['id'] not in trackset:
             playlist.add([t['id']])
     
 

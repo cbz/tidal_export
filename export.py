@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from tinydb import TinyDB, Query
+from tinydb import TinyDB
 import tidalapi
 
 DBASE="playlist.json"
