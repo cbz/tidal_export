@@ -2,6 +2,7 @@
 
 from tinydb import TinyDB
 import tidalapi
+import json
 
 DBASE="playlist.json"
 
@@ -19,14 +20,13 @@ db = TinyDB(DBASE)
 
 for p in playlists:
     print(f'Exporting playlist: {p.name}')
-    playlist = { 'name': p.name }
+    playlist = { 'name': p.name, 'description': p.description }
     
     tracks = []
     for t in p.tracks():
         tracks.append({'artist': t.artist.name, 'album': t.album.name, 'track': t.name, 'id': t.id})
 
     playlist['tracks'] = tracks
-
     db.insert(playlist)
 
 db.close()

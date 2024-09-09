@@ -16,6 +16,10 @@ db = TinyDB(DBASE)
 
 for p in db:
     playlist_name = p["name"]
+    description = ""
+    if 'description' in p:
+        description = p["description"]
+        
     insert_tracks = p["tracks"]
     print(f'Importing playlist: {playlist_name}')
      
@@ -24,7 +28,7 @@ for p in db:
     if playlist:
         playlist = playlist[0]
     else:
-        playlist = session.user.create_playlist(playlist_name, "")
+        playlist = session.user.create_playlist(playlist_name, description)
     
     trackset = set([t.id for t in playlist.tracks()])
     
@@ -32,5 +36,4 @@ for p in db:
         if 'id' in t and t['id'] not in trackset:
             playlist.add([t['id']])
     
-
 db.close()
