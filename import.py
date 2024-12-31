@@ -32,7 +32,7 @@ def process_searchable_track(playlist, trackset, t):
         if len(tracks) == 1:
             newtrack = tracks[0]
         else:
-            closest_albums = difflib.get_close_matches(album, [t.album.name for t in tracks])
+            closest_albums = difflib.get_close_matches(album, [t.album.name for t in tracks],cutoff=0.5)
             tracks = [t for name in closest_albums for t in tracks if t.album.name == name]
             closest_tracks = difflib.get_close_matches(track, [t.name for t in tracks])
             tracks = [t for name in closest_tracks for t in tracks if t.name == name]

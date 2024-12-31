@@ -34,7 +34,8 @@ if __name__ == '__main__':
             
             tracks = []
             for t in p.tracks():
-                tracks.append({'artist': t.artist.name, 'album': t.album.name, 'track': t.name, 'id': t.id})
+                tracks.append({'artist': t.artist.name, 'album': t.album.name,
+                               'track': t.name, 'id': t.id})
 
             playlist['tracks'] = tracks
             db.insert(playlist)
